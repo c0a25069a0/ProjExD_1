@@ -15,6 +15,8 @@ def main():
     original2 = pg.image.load("fig/pg_bg.jpg")
     koukaton = pg.image.load("fig/3.png")
     koukaton = pg.transform.flip(koukaton, True, False)
+    koukaton_rect = koukaton.get_rect()
+    koukaton_rect.center = 300, 200
     tmr = 0
     bg_x = 0
     while True:
@@ -22,7 +24,7 @@ def main():
             if event.type == pg.QUIT: return
 
         screen.blit(original1, [-bg_x, 0])
-        screen.blit(koukaton, [300, 200])
+        screen.blit(koukaton, koukaton_rect)
         pg.display.update()
         bg_x += 1
         
@@ -31,7 +33,17 @@ def main():
         
         tmr += 1
         if(bg_x == 3200):
-            bg_x = 0        
+            bg_x = 0
+
+        key_lst = pg.key.get_pressed()
+        if key_lst[pg.K_UP]:
+            koukaton_rect.move_ip((0, -1))   
+        if key_lst[pg.K_DOWN]:
+            koukaton_rect.move_ip((0, 1))  
+        if key_lst[pg.K_RIGHT]:
+            koukaton_rect.move_ip((1, 0))        
+        if key_lst[pg.K_LEFT]:
+            koukaton_rect.move_ip((-1, 0))   
         clock.tick(200)
 
 
