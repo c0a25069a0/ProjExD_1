@@ -35,13 +35,14 @@ def main():
         if(bg_x == 3200):
             bg_x = 0
 
-        key_lst = pg.key.get_pressed()
+        key_lst = pg.key.get_pressed() 
+        koukaton_rect.move_ip((-1, 0)) 
         if key_lst[pg.K_UP]:
             koukaton_rect.move_ip((0, -1))   
         if key_lst[pg.K_DOWN]:
             koukaton_rect.move_ip((0, 1))  
         if key_lst[pg.K_RIGHT]:
-            koukaton_rect.move_ip((1, 0))        
+            koukaton_rect.move_ip((2, 0))        
         if key_lst[pg.K_LEFT]:
             koukaton_rect.move_ip((-1, 0))   
         clock.tick(200)
