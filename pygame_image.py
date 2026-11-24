@@ -34,17 +34,20 @@ def main():
         tmr += 1
         if(bg_x == 3200):
             bg_x = 0
-
+        move_location = [0, 0]
         key_lst = pg.key.get_pressed() 
-        koukaton_rect.move_ip((-1, 0)) 
+        
         if key_lst[pg.K_UP]:
-            koukaton_rect.move_ip((0, -1))   
+            move_location[1] -= 1   
         if key_lst[pg.K_DOWN]:
-            koukaton_rect.move_ip((0, 1))  
+            move_location[1] += 1  
         if key_lst[pg.K_RIGHT]:
-            koukaton_rect.move_ip((2, 0))        
+            move_location[0] += 2        
         if key_lst[pg.K_LEFT]:
-            koukaton_rect.move_ip((-1, 0))   
+            move_location[0] -= 1   
+
+        move_location[0] -= 1
+        koukaton_rect.move_ip(move_location) 
         clock.tick(200)
 
 
